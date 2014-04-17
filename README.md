@@ -9,8 +9,8 @@ Just a little plugin to add a custom rating system .. away with the stars and dr
 <h2>Using Rating Plugin</h2>
 
 It is really very simple. Just add the following to the code:
-<pre>
-"
+
+```
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="{path_to_js}/src/rating.min.js"></script>
 
@@ -18,11 +18,20 @@ It is really very simple. Just add the following to the code:
     <div class="inner">
     </div>
 </div>
-"
+```
 
 </pre>
 
+and you can make it "Visible" So , by adding this
 
-and tada.... you are done !!
+```
+<script>
+    $(".ratings").rating();
+</script>
+```
+
+. and Done...
+
+More Updates coming soon. Just a preview of idea i had in mind.
 
 
