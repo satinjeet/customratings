@@ -13,26 +13,40 @@
 
     $.fn.rating = function(options) {
 
+        if (options === undefined) {
+            options = {};
+        }
         /** create Rating ul list **/
         ul = document.createElement("ul");
+        if (options.direction === "h") {
+            ul.className = "horizontal";            
+        }
         for (var symbol in ratingObj) {
             li = document.createElement("li");
             li.innerHTML = symbol;
             ul.appendChild(li);
         }
-        this.html(ul);
+        this.find("div").html(ul);
 
         /** add mouse listeners **/
-        this.mouseenter(bigger);
-        this.mouseleave(small);
-        this.on("click", rateIt);
-        this.on("close", small)
+        this.mouseenter(options, bigger);
+        this.mouseleave(options, small);
+        this.on("click", options, rateIt);
+        this.on("close", options, small)
+        this.mouseenter(options, biggerH);
+        this.mouseleave(options, smallH);
+        this.on("click", options, rateItH);
+        this.on("close", options, smallH)
 
         /** Handlers **/
 
     }
 
     var rateIt = function(e) {
+        if (e.data.direction == 'h') {
+            return
+        }
+        $(this).stop();
         if (e.target.nodeName.toLowerCase() === "li") {
             li = $(e.target);
             $(e.currentTarget).find("ul").animate({
@@ -42,7 +56,10 @@
         }
     }
 
-    var bigger = function() {
+    var bigger = function(e, options) {
+        if (e.data.direction == 'h') {
+            return
+        }
         ul = $(this).find("ul");
         $(this).stop();
         ul.animate({
@@ -53,11 +70,53 @@
         }, 500)
     }
 
-    var small = function() {
-        li = $(this).find("ul").find("li");
+    var small = function(e) {
+        if (e.data.direction == 'h') {
+            return
+        }
         $(this).stop();
+        li = $(this).find("ul").find("li");
         $(this).animate({
             height: li[0].clientHeight
+        }, 500);
+    }
+
+    var rateItH = function(e) {
+        if (e.data.direction != 'h') {
+            return
+        }
+        $(this).stop();
+        if (e.target.nodeName.toLowerCase() === "li") {
+            li = $(e.target);
+            $(e.currentTarget).find("ul").animate({
+                "margin-left": -li.position().left
+            }, 500);
+            $(this).trigger("close");
+        }
+    }
+
+    var biggerH = function(e, options) {
+        if (e.data.direction != 'h') {
+            return
+        }
+        $(this).stop();
+        ul = $(this).find("ul");
+        ul.animate({
+            "margin-left": 0
+        }, 500);
+        $(this).animate({
+            width: ul.width()
+        }, 500)
+    }
+
+    var smallH = function(e) {
+        if (e.data.direction != 'h') {
+            return
+        }
+        $(this).stop();
+        li = $(this).find("ul").find("li");
+        $(this).animate({
+            width: 50
         }, 500);
     }
 
