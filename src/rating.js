@@ -53,6 +53,7 @@
                 "margin-top": -li.position().top
             }, 500);
             $(this).trigger("close");
+            $(window).trigger("rated", [{"points": ratingObj[li.html()]}]);
         }
     }
 
@@ -92,6 +93,7 @@
                 "margin-left": -li.position().left
             }, 500);
             $(this).trigger("close");
+            $(window).trigger("rated", [{"points": ratingObj[li.html()]}]);
         }
     }
 
