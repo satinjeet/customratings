@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-.inner {
+.ratings .inner {
     width: 500px;
     height: 50px;
 }
