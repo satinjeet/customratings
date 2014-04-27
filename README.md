@@ -1,7 +1,5 @@
-customratings
+Custom Rating Module for your web pages.
 =============
-
-Custom Rating System
 
 Just a little plugin to add a custom rating system .. away with the stars and dropdowns and other old system :).
 
@@ -31,6 +29,17 @@ and you can make it "Visible" So , by adding this
 ```
 
 . and Done...
+
+wanna make it horizontal ??
+```
+<script>
+    $(".ratings").rating({
+        direction: "h"
+    });
+</script>
+```
+
+and Done...
 
 More Updates coming soon. Just a preview of idea i had in mind.
 
