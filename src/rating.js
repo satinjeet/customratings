@@ -52,7 +52,7 @@
             li = $(e.target);
             currentRate = li;
             $(this).trigger("close");
-            $(window).trigger("rated", [{"points": ratingObj[li.html()]}]);
+            $(window).trigger("rated", [{"points": ratingObj[e.target.innerHTML]}]);
         }
     }
 
@@ -95,7 +95,7 @@
             li = $(e.target);
             currentRate = li;
             $(this).trigger("close");
-            $(window).trigger("rated", [{"points": ratingObj[li.html()]}]);
+            $(window).trigger("rated", [{"points": ratingObj[e.target.innerHTML]}]);
         }
     }
 
