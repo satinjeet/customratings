@@ -3,7 +3,7 @@ Custom Rating Module for your web pages.
 
 Just a little plugin to add a custom rating system .. away with the stars and dropdowns and other old system :).
 
-
+<h2><a href="http://satinjeet.github.io/ratings/">View Demo</a></h2>
 <h2>Using Rating Plugin</h2>
 
 It is really very simple. Just add the following to the code:
