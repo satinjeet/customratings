@@ -10,6 +10,7 @@
         "x_x":  0
     }
     var mainEle = ".ratings";
+    var currentRate = null;
 
     $.fn.rating = function(options) {
 
@@ -49,9 +50,7 @@
         $(this).stop();
         if (e.target.nodeName.toLowerCase() === "li") {
             li = $(e.target);
-            $(e.currentTarget).find("ul").animate({
-                "margin-top": -li.position().top
-            }, 500);
+            currentRate = li;
             $(this).trigger("close");
             $(window).trigger("rated", [{"points": ratingObj[li.html()]}]);
         }
@@ -75,6 +74,11 @@
         if (e.data.direction == 'h') {
             return;
         }
+        if (currentRate !== null) {
+            $(e.currentTarget).find("ul").animate({
+                    "margin-top": -currentRate.position().top
+            }, 500);
+        }        
         $(this).stop();
         li = $(this).find("ul").find("li");
         $(this).animate({
@@ -89,9 +93,7 @@
         $(this).stop();
         if (e.target.nodeName.toLowerCase() === "li") {
             li = $(e.target);
-            $(e.currentTarget).find("ul").animate({
-                "margin-left": -li.position().left
-            }, 500);
+            currentRate = li;
             $(this).trigger("close");
             $(window).trigger("rated", [{"points": ratingObj[li.html()]}]);
         }
@@ -118,6 +120,11 @@
             return;
         }
         $(this).stop();
+        if (currentRate !== null) {
+            $(e.currentTarget).find("ul").animate({
+                "margin-left": -currentRate.position().left
+            }, 500);
+        }
         li = $(this).find("ul").find("li");
         $(this).animate({
             width: 50
